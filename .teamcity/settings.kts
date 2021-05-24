@@ -178,8 +178,8 @@ object ProdDeploy : BuildType({
     }
 
     dependencies {
-        dependency(TestDeploy) {
-            snapshot {
+        dependency {
+            snapshot(TestDeploy) {
                 onDependencyFailure = FailureAction.CANCEL
                 onDependencyCancel = FailureAction.CANCEL
             }
