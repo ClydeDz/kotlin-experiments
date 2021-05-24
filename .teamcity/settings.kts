@@ -184,7 +184,7 @@ object ProdDeploy : BuildType({
                 onDependencyCancel = FailureAction.CANCEL
             }
 
-            artifacts {
+            artifacts(Build) {
                 cleanDestination = true
                 artifactRules = "**/*.*=>target"
             }
