@@ -102,7 +102,7 @@ object TestDeploy : BuildType({
         }
         script {
             name = "Update blob storage"
-            scriptContent = "az storage blob upload-batch --account-name craazstoragedemo78050 -d ${'$'}web -s ./target --auth-mode login"
+            scriptContent = "az storage blob upload-batch --account-name craazstoragedemo48765 -d ${'$'}web -s ./target --auth-mode login"
         }
         script {
             name = "Azure logout"
@@ -161,7 +161,7 @@ object ProdDeploy : BuildType({
         }
         script {
             name = "Update blob storage"
-            scriptContent = "az storage blob upload-batch --account-name craazstoragedemo48765 -d ${'$'}web -s ./target --auth-mode login"
+            scriptContent = "az storage blob upload-batch --account-name craazstoragedemo78050 -d ${'$'}web -s ./target --auth-mode login"
         }
         script {
             name = "Azure logout"
