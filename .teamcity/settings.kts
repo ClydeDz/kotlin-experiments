@@ -178,13 +178,14 @@ object ProdDeploy : BuildType({
     }
 
     dependencies {
-        dependency {
-            snapshot(TestDeploy) {
+        dependency(TestDeploy) {
+            snapshot{
                 onDependencyFailure = FailureAction.CANCEL
                 onDependencyCancel = FailureAction.CANCEL
             }
-
-            artifacts(Build) {
+        }
+        dependency(Build) {
+            artifacts {
                 cleanDestination = true
                 artifactRules = "**/*.*=>target"
             }
