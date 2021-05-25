@@ -6,7 +6,7 @@ class DeployToEnvironmentDto {
     constructor(env: String,
                 storageAccountName: String,
                 manualDeployment: Boolean,
-                triggeredByBuild: BuildType?,
+                triggeredByBuild: BuildType? = null,
                 snapshotDependencyBuild: BuildType,
                 artifactDependencyBuild: BuildType){
         Env = env;
