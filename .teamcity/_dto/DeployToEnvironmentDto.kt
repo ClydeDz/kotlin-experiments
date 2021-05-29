@@ -7,12 +7,14 @@ class DeployToEnvironmentDto {
                 storageAccountName: String,
                 manualDeployment: Boolean,
                 triggeredByBuild: BuildType? = null,
+                triggeredByBranchFilter: String? = null,
                 snapshotDependencyBuild: BuildType,
                 artifactDependencyBuild: BuildType){
         Env = env;
         StorageAccountName = storageAccountName;
         ManualDeployment = manualDeployment;
         TriggeredByBuild = triggeredByBuild;
+        TriggeredByBranchFilter = triggeredByBranchFilter;
         SnapshotDependencyBuild = snapshotDependencyBuild;
         ArtifactDependencyBuild = artifactDependencyBuild;
     }
@@ -21,6 +23,7 @@ class DeployToEnvironmentDto {
     var StorageAccountName: String = "";
     var ManualDeployment: Boolean = false;
     var TriggeredByBuild: BuildType? = null;
+    var TriggeredByBranchFilter: String? = null;
     var SnapshotDependencyBuild: BuildType = BuildType();
     var ArtifactDependencyBuild: BuildType = BuildType();
 }

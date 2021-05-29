@@ -52,7 +52,7 @@ class DeployToEnvironment(deploySettings: DeployToEnvironmentDto): BuildType({
             finishBuildTrigger {
                 buildType = "${deploySettings.TriggeredByBuild?.id}"
                 successfulOnly = true
-                branchFilter = "+:main"
+                branchFilter = "${deploySettings.TriggeredByBranchFilter}"
             }
         }
     }
