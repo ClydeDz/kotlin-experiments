@@ -25,7 +25,7 @@ class Build : BuildType ({
 
     steps {
         script {
-            name = "Create text file"
+            name = "Say hello world"
             scriptContent = "echo 'Hello world'"
         }
         script {
