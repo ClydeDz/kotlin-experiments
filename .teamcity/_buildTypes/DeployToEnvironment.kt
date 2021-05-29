@@ -9,7 +9,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import _dto.*
 
 class DeployToEnvironment(deploySettings: DeployToEnvironmentDto): BuildType({
-    val id = "DeployToEnvironment${deploySettings.Env}}"
+    val id = "DeployToEnvironment${deploySettings.Env}"
     id(id)
     
     name = "Deploy to ${deploySettings.Env}"
