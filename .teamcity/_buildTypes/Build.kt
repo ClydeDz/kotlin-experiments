@@ -12,6 +12,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 class Build : BuildType ({
     name = "Build & test"
 
+    artifactRules = "version.txt"
     publishArtifacts = PublishMode.SUCCESSFUL
 
     vcs {
