@@ -19,7 +19,8 @@ object KotlinExperiments: Project({
     val productionDeploymentDto = DeployToEnvironmentDto(
             env = "production",
             storageAccountName = "craazstoragedemo78050",
-            manualDeployment = true,
+            manualDeployment = false,
+            triggeredByBuild = testDeployment,
             snapshotDependencyBuild = testDeployment,
             artifactDependencyBuild = buildAndTest
     )
