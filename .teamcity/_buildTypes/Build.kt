@@ -26,7 +26,7 @@ class Build : BuildType ({
     steps {
         script {
             name = "Create build directory"
-            scriptContent = """echo "Build %build.counter%" > "build\version.txt"""
+            scriptContent = "md build"
         }
         script {
             name = "Create text file"
