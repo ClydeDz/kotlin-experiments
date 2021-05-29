@@ -11,6 +11,7 @@ import _dto.*
 class DeployToEnvironment(deploySettings: DeployToEnvironmentDto): BuildType({
     val id = "DeployToEnvironment${deploySettings.Env}}"
     id(id)
+    
     name = "Deploy to ${deploySettings.Env}"
 
     enablePersonalBuilds = false
