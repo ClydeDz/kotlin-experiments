@@ -4,7 +4,6 @@ import _dto.DeployToEnvironmentDto
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 
 object KotlinExperiments: Project({
-    id("KotlinExperiments")
     val buildAndTest = Build()
 
     val testDeploymentDto = DeployToEnvironmentDto(
