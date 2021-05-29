@@ -12,7 +12,6 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 class Build : BuildType ({
     name = "Build & test"
 
-    artifactRules = "build"
     publishArtifacts = PublishMode.SUCCESSFUL
 
     vcs {
@@ -25,12 +24,8 @@ class Build : BuildType ({
 
     steps {
         script {
-            name = "Create build directory"
-            scriptContent = "md build"
-        }
-        script {
             name = "Create text file"
-            scriptContent = """echo "Build %build.counter%" > "build\version.txt"""
+            scriptContent = """echo "Build %build.counter%" > "version.txt"""
         }
     }
 
