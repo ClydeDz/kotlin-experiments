@@ -26,6 +26,7 @@ class DeployToEnvironment(deploySettings: DeployToEnvironmentDto): BuildType({
 
     vcs {
         root(DslContext.settingsRoot)
+        branchFilter = "${deploySettings.TriggeredByBranchFilter}"
     }
 
     steps {
