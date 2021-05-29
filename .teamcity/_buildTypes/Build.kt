@@ -25,17 +25,21 @@ class Build : BuildType ({
 
     steps {
         script {
-            name = "Install NPM packages"
-            scriptContent = "npm ci"
+            name = "Create text file"
+            scriptContent = "echo \"Build %build.counter%\" > \"version.txt\""
         }
-        script {
-            name = "Build project"
-            scriptContent = "npm run build"
-        }
-        script {
-            name = "Run unit tests"
-            scriptContent = "set CI=true&&npm test"
-        }
+//        script {
+//            name = "Install NPM packages"
+//            scriptContent = "npm ci"
+//        }
+//        script {
+//            name = "Build project"
+//            scriptContent = "npm run build"
+//        }
+//        script {
+//            name = "Run unit tests"
+//            scriptContent = "set CI=true&&npm test"
+//        }
     }
 
     triggers {
