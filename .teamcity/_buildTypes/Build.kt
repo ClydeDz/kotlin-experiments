@@ -26,6 +26,10 @@ class Build : BuildType ({
     steps {
         script {
             name = "Create text file"
+            scriptContent = "echo 'Hello world'"
+        }
+        script {
+            name = "Create text file"
             scriptContent = """echo "Build %build.counter%" > "version.txt"""
         }
     }
