@@ -4,6 +4,11 @@ import _dto.DeployToEnvironmentDto
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 
 object KotlinExperiments: Project({
+
+    params {
+        param("teamcity.vcsTrigger.runBuildInNewEmptyBranch", "true")
+    }
+
     val buildAndTest = Build()
 
     val testDeploymentDto = DeployToEnvironmentDto(
