@@ -27,7 +27,7 @@ object KotlinExperiments: Project({
             storageAccountName = "craazstoragedemo78050",
             manualDeployment = false,
             triggeredByBuild = testDeployment,
-            triggeredByBranchFilter = "+:main",
+            triggeredByBranchFilter = "+:*",
             snapshotDependencyBuild = testDeployment,
             artifactDependencyBuild = buildAndTest
     )
