@@ -1,6 +1,7 @@
 import _buildTypes.Build
 import _buildTypes.DeployToEnvironment
 import _dto.DeployToEnvironmentDto
+import _vcs.KotlinExperimentsVcsRoot
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 
 object KotlinExperiments: Project({
@@ -8,6 +9,8 @@ object KotlinExperiments: Project({
     params {
         param("teamcity.vcsTrigger.runBuildInNewEmptyBranch", "true")
     }
+
+    vcsRoot(KotlinExperimentsVcsRoot)
 
     val buildAndTest = Build()
 
