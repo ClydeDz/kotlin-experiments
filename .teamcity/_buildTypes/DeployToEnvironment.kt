@@ -2,11 +2,11 @@ package _buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildTypeSettings
-import jetbrains.buildServer.configs.kotlin.v2019_2.DslContext
 import jetbrains.buildServer.configs.kotlin.v2019_2.FailureAction
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
 import _dto.*
+import _vcs.*
 
 class DeployToEnvironment(deploySettings: DeployToEnvironmentDto): BuildType({
     val id = "DeployToEnvironment${deploySettings.Env}"
@@ -25,7 +25,7 @@ class DeployToEnvironment(deploySettings: DeployToEnvironmentDto): BuildType({
     }
 
     vcs {
-        root(DslContext.settingsRoot)
+        root(KotlinExperimentsVcsRoot)
         branchFilter = "${deploySettings.TriggeredByBranchFilter}"
     }
 
