@@ -17,10 +17,6 @@ class Build : BuildType ({
 
     vcs {
         root(KotlinExperimentsVcsRoot)
-        checkoutDir = """
-            -:.teamcity
-            -:*.md
-        """.trimIndent()
     }
 
     params {
@@ -44,6 +40,10 @@ class Build : BuildType ({
             perCheckinTriggering = true
             groupCheckinsByCommitter = true
             enableQueueOptimization = true
+            triggerRules = """
+                -:.teamcity
+                -:*.md
+            """.trimIndent()
         }
     }
 
