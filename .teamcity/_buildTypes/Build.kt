@@ -36,6 +36,7 @@ class Build : BuildType ({
 
     triggers {
         vcs {
+            id = "${KotlinExperimentsVcsRoot.id}"
             perCheckinTriggering = true
             groupCheckinsByCommitter = true
             enableQueueOptimization = true
