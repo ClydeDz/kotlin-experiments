@@ -8,7 +8,7 @@ function Home() {
           <h1>
             Kotlin Experiments Home
           </h1>
-<p>Update 1</p>
+<p>Update 2</p>
         </header>
       </div>
     );
