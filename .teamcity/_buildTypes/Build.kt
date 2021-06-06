@@ -17,6 +17,10 @@ class Build : BuildType ({
 
     vcs {
         root(KotlinExperimentsVcsRoot)
+        checkoutDir = """
+            +:.=>AgentPath
+            -:.teamcity
+        """.trimIndent()
     }
 
     params {
