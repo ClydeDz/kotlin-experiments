@@ -1,13 +1,13 @@
 package _buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
-import jetbrains.buildServer.configs.kotlin.v2019_2.DslContext
 import jetbrains.buildServer.configs.kotlin.v2019_2.PublishMode
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.commitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.pullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
+import _vcs.*
 
 class Build : BuildType ({
     name = "Build & test"
@@ -16,7 +16,7 @@ class Build : BuildType ({
     publishArtifacts = PublishMode.SUCCESSFUL
 
     vcs {
-        root(DslContext.settingsRoot)
+        root(KotlinExperimentsVcsRoot)
     }
 
     params {
@@ -44,7 +44,7 @@ class Build : BuildType ({
 
     features {
         pullRequests {
-            vcsRootExtId = "${DslContext.settingsRoot.id}"
+            vcsRootExtId = "${KotlinExperimentsVcsRoot.id}"
             provider = github {
                 authType = token {
                     token = "%github-repo-token%"
@@ -54,7 +54,7 @@ class Build : BuildType ({
             }
         }
         commitStatusPublisher {
-            vcsRootExtId = "${DslContext.settingsRoot.id}"
+            vcsRootExtId = "${KotlinExperimentsVcsRoot.id}"
             publisher = github {
                 githubUrl = "https://api.github.com"
                 authType = personalToken {
