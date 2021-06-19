@@ -18,8 +18,7 @@ class Build : BuildType ({
 
     vcs {
         root(KotlinExperimentsVcsRoot)
-        checkoutMode = CheckoutMode.ON_SERVER
-        checkoutDir = """
+        triggerRules = """
             +:.=>AgentPath
             -:.teamcity
         """.trimIndent()
