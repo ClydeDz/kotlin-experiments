@@ -42,4 +42,9 @@ object UatBuild : BuildType ({
             branchFilter = "+:*"
         }
     }
+
+    dependencies {
+        dependency(RegularBuild){
+        }
+    }
 })

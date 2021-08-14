@@ -39,4 +39,9 @@ object ProdBuild : BuildType ({
             branchFilter = "+:*"
         }
     }
+    
+    dependencies {
+        dependency(RegularBuild){
+        }
+    }
 })
