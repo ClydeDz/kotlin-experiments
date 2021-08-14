@@ -46,5 +46,7 @@ object UatBuild : BuildType ({
     dependencies {
         dependency(RegularBuild){
         }
+        snapshot(RegularBuild){
+        }
     }
 })
