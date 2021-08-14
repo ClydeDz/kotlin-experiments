@@ -1,7 +1,6 @@
 package _buildTypes
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
-import jetbrains.buildServer.configs.kotlin.v2019_2.PublishMode
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.PullRequests
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.commitStatusPublisher
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.pullRequests
@@ -9,11 +8,8 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 import _vcs.*
 
-class Build : BuildType ({
+object RegularBuild : BuildType ({
     name = "Build & test"
-
-    artifactRules = "version.txt"
-    publishArtifacts = PublishMode.SUCCESSFUL
 
     vcs {
         root(KotlinExperimentsVcsRoot)
@@ -28,10 +24,6 @@ class Build : BuildType ({
             name = "Say hello world"
             scriptContent = "echo 'Hello world'"
         }
-        script {
-            name = "Create text file"
-            scriptContent = """echo "Build %build.counter%" > "version.txt"""
-        }
     }
 
     triggers {
@@ -40,10 +32,6 @@ class Build : BuildType ({
             perCheckinTriggering = true
             groupCheckinsByCommitter = true
             enableQueueOptimization = true
-            triggerRules = """
-                -:.teamcity
-                -:*.md
-            """.trimIndent()
         }
     }
 

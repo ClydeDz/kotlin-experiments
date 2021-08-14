@@ -1,5 +1,7 @@
-import _buildTypes.Build
+import _buildTypes.RegularBuild
 import _buildTypes.DeployToEnvironment
+import _buildTypes.ProdBuild
+import _buildTypes.UatBuild
 import _dto.DeployToEnvironmentDto
 import _vcs.KotlinExperimentsVcsRoot
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
@@ -12,32 +14,30 @@ object KotlinExperiments: Project({
 
     vcsRoot(KotlinExperimentsVcsRoot)
 
-    val buildAndTest = Build()
+    buildType(RegularBuild)
+    buildType(UatBuild)
+    buildType(ProdBuild)
 
-    val testDeploymentDto = DeployToEnvironmentDto(
-            env = "test",
-            storageAccountName = "craazstoragedemo48765",
-            manualDeployment = false,
-            triggeredByBuild = buildAndTest,
-            triggeredByBranchFilter = "+:*",
-            snapshotDependencyBuild = buildAndTest,
-            artifactDependencyBuild = buildAndTest
-    )
-    val testDeployment = DeployToEnvironment(testDeploymentDto)
-
-    val productionDeploymentDto = DeployToEnvironmentDto(
-            env = "production",
-            storageAccountName = "craazstoragedemo78050",
-            manualDeployment = false,
-            triggeredByBuild = testDeployment,
-            triggeredByBranchFilter = "+:*",
-            snapshotDependencyBuild = testDeployment,
-            artifactDependencyBuild = buildAndTest
-    )
-    val productionDeployment = DeployToEnvironment(productionDeploymentDto)
-
-    buildType(buildAndTest)
-    buildType(testDeployment)
-    buildType(productionDeployment)
-    buildTypesOrder = listOf(buildAndTest, testDeployment, productionDeployment)
+//    val testDeploymentDto = DeployToEnvironmentDto(
+//            env = "test",
+//            storageAccountName = "craazstoragedemo48765",
+//            manualDeployment = false,
+//            triggeredByBuild = buildAndTest,
+//            triggeredByBranchFilter = "+:*",
+//            snapshotDependencyBuild = buildAndTest,
+//            artifactDependencyBuild = buildAndTest
+//    )
+//    val testDeployment = DeployToEnvironment(testDeploymentDto)
+//
+//    val productionDeploymentDto = DeployToEnvironmentDto(
+//            env = "production",
+//            storageAccountName = "craazstoragedemo78050",
+//            manualDeployment = false,
+//            triggeredByBuild = testDeployment,
+//            triggeredByBranchFilter = "+:*",
+//            snapshotDependencyBuild = testDeployment,
+//            artifactDependencyBuild = buildAndTest
+//    )
+//    val productionDeployment = DeployToEnvironment(productionDeploymentDto)
+    buildTypesOrder = listOf(RegularBuild, UatBuild, ProdBuild)
 })
