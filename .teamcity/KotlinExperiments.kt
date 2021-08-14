@@ -1,7 +1,4 @@
-import _buildTypes.RegularBuild
-import _buildTypes.DeployToEnvironment
-import _buildTypes.ProdBuild
-import _buildTypes.UatBuild
+import _buildTypes.*
 import _dto.DeployToEnvironmentDto
 import _vcs.KotlinExperimentsVcsRoot
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
@@ -24,6 +21,8 @@ object KotlinExperiments: Project({
             buildType(UatBuild)
             buildType(ProdBuild)
         }
+        buildType(UatDeploy)
+        buildType(ProdDeploy)
     }
 
 //    val testDeploymentDto = DeployToEnvironmentDto(
