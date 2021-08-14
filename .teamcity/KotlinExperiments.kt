@@ -1,5 +1,4 @@
 import _buildTypes.*
-import _dto.DeployToEnvironmentDto
 import _vcs.KotlinExperimentsVcsRoot
 import jetbrains.buildServer.configs.kotlin.v2019_2.*
 
@@ -11,35 +10,7 @@ object KotlinExperiments: Project({
 
     vcsRoot(KotlinExperimentsVcsRoot)
 
-    buildType(RegularBuild)
-    buildType(UatBuild)
-    buildType(ProdBuild)
-    buildType(UatDeploy)
-    buildType(ProdDeploy)
-
-//    val testDeploymentDto = DeployToEnvironmentDto(
-//            env = "test",
-//            storageAccountName = "craazstoragedemo48765",
-//            manualDeployment = false,
-//            triggeredByBuild = buildAndTest,
-//            triggeredByBranchFilter = "+:*",
-//            snapshotDependencyBuild = buildAndTest,
-//            artifactDependencyBuild = buildAndTest
-//    )
-//    val testDeployment = DeployToEnvironment(testDeploymentDto)
-//
-//    val productionDeploymentDto = DeployToEnvironmentDto(
-//            env = "production",
-//            storageAccountName = "craazstoragedemo78050",
-//            manualDeployment = false,
-//            triggeredByBuild = testDeployment,
-//            triggeredByBranchFilter = "+:*",
-//            snapshotDependencyBuild = testDeployment,
-//            artifactDependencyBuild = buildAndTest
-//    )
-//    val productionDeployment = DeployToEnvironment(productionDeploymentDto)
-
-    sequential  {
+    val buildChain = sequential {
         buildType(RegularBuild)
         parallel (options = { onDependencyFailure = FailureAction.CANCEL }) {
             buildType(UatBuild)
@@ -49,5 +20,5 @@ object KotlinExperiments: Project({
         buildType(ProdDeploy)
     }
 
-//  buildTypesOrder = listOf(RegularBuild, UatBuild, ProdBuild)
+    buildChain.buildTypes().forEach { buildType(it) }
 })

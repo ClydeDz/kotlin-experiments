@@ -1,4 +1,4 @@
-package _dto
+package _unused._dto
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 

@@ -1,12 +1,38 @@
-package _buildTypes
+package _unused
 
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
 import jetbrains.buildServer.configs.kotlin.v2019_2.BuildTypeSettings
 import jetbrains.buildServer.configs.kotlin.v2019_2.FailureAction
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.finishBuildTrigger
-import _dto.*
+import _unused._dto.*
 import _vcs.*
+
+
+//    val testDeploymentDto = DeployToEnvironmentDto(
+//            env = "test",
+//            storageAccountName = "craazstoragedemo48765",
+//            manualDeployment = false,
+//            triggeredByBuild = buildAndTest,
+//            triggeredByBranchFilter = "+:*",
+//            snapshotDependencyBuild = buildAndTest,
+//            artifactDependencyBuild = buildAndTest
+//    )
+//    val testDeployment = DeployToEnvironment(testDeploymentDto)
+//
+//    val productionDeploymentDto = DeployToEnvironmentDto(
+//            env = "production",
+//            storageAccountName = "craazstoragedemo78050",
+//            manualDeployment = false,
+//            triggeredByBuild = testDeployment,
+//            triggeredByBranchFilter = "+:*",
+//            snapshotDependencyBuild = testDeployment,
+//            artifactDependencyBuild = buildAndTest
+//    )
+//    val productionDeployment = DeployToEnvironment(productionDeploymentDto)
+
+
+//  buildTypesOrder = listOf(RegularBuild, UatBuild, ProdBuild)
 
 class DeployToEnvironment(deploySettings: DeployToEnvironmentDto): BuildType({
     val id = "DeployToEnvironment${deploySettings.Env}"
