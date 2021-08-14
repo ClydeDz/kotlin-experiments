@@ -18,6 +18,14 @@ object KotlinExperiments: Project({
     buildType(UatBuild)
     buildType(ProdBuild)
 
+    sequential  {
+        buildType(RegularBuild)
+        parallel (options = { onDependencyFailure = FailureAction.CANCEL }) {
+            buildType(UatBuild)
+            buildType(ProdBuild)
+        }
+    }
+
 //    val testDeploymentDto = DeployToEnvironmentDto(
 //            env = "test",
 //            storageAccountName = "craazstoragedemo48765",
@@ -39,5 +47,5 @@ object KotlinExperiments: Project({
 //            artifactDependencyBuild = buildAndTest
 //    )
 //    val productionDeployment = DeployToEnvironment(productionDeploymentDto)
-    buildTypesOrder = listOf(RegularBuild, UatBuild, ProdBuild)
+    //buildTypesOrder = listOf(RegularBuild, UatBuild, ProdBuild)
 })
