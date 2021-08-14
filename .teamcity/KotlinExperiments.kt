@@ -14,6 +14,8 @@ object KotlinExperiments: Project({
     buildType(RegularBuild)
     buildType(UatBuild)
     buildType(ProdBuild)
+    buildType(UatDeploy)
+    buildType(ProdDeploy)
 
     sequential  {
         buildType(RegularBuild)
